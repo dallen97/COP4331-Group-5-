@@ -1,6 +1,7 @@
 <?php
 
 $inData = getRequestInfo();
+$msg = "";
 
 $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 if ($conn->connect_error) 
@@ -51,13 +52,13 @@ function sendResultInfoAsJson($obj)
 
 function returnWithError($err)
 {
-    $retValue = '{"results":[],"error":"' . $err . '"}';
+    $retValue = '{"message":"' . $msg . '","error":"' . $err . '"}';
     sendResultInfoAsJson($retValue);
 }
 
 function returnWithInfo($msg)
 {
-    $retValue = '{"results":[],"message":"' . $msg . '","error":""}';
+    $retValue = '{"message":"' . $msg . '","error":""}';
     sendResultInfoAsJson($retValue);
 }
 
