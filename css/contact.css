@@ -1,0 +1,129 @@
+/* Import Ubuntu font */
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Page title */
+#title {
+  margin-top: 40px;
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+/* Logged in div with logout */
+#loggedInDiv {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#userName {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* General button styling */
+.buttons {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-top: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.buttons:hover {
+  background-color: #2980b9;
+}
+
+/* Access UI area */
+#accessUIDiv {
+  background: white;
+  padding: 30px;
+  margin-top: 30px;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Inputs */
+#accessUIDiv input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccd1d9;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+#accessUIDiv input[type="text"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Contact table */
+#contactTable {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#contactTable thead {
+  background-color: #3498db;
+  color: white;
+}
+
+#contactTable th,
+#contactTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#contactTable tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Result spans */
+#contactSearchResult,
+#contactAddResult {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #e74c3c;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  #accessUIDiv {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .buttons {
+    width: 100%;
+  }
+
+  #contactTable th,
+  #contactTable td {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Manager - COP 4331</title>
+    <link href="css/contact.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu"
+      rel="stylesheet"
+    />
+    <script src="./js/code.js" defer></script>
+  </head>
+
+  <body>
+    <h1 id="title">COP 4331 Contact Manager</h1>
+
+    <!-- Logged-in user + logout -->
+    <div id="loggedInDiv">
+      <span id="userName"></span><br />
+      <button
+        type="button"
+        id="logoutButton"
+        class="buttons"
+        onclick="doLogout();"
+      >
+        Log Out
+      </button>
+    </div>
+
+    <!-- Search bar + results placeholder -->
+    <div id="accessUIDiv">
+      <br />
+      <input
+        type="text"
+        id="searchText"
+        placeholder="Search Contacts by Name"
+      />
+      <button
+        type="button"
+        id="searchContactButton"
+        class="buttons"
+        onclick="searchContacts();"
+      >
+        Search Contact
+      </button>
+      <br />
+      <span id="contactSearchResult"></span>
+
+      <!-- Contact table (with inline Edit/Delete) -->
+      <table id="contactTable">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="contactList">
+          <!-- JS inserts rows with Edit/Delete buttons here -->
+          <!-- On Edit: convert row cells to input fields + Show Save/Cancel -->
+        </tbody>
+      </table>
+      <div id="paginationControls">
+        <button
+          type="button"
+          id="prevPageButton"
+          class="buttons"
+          onclick="goToPreviousPage();"
+        >
+          Previous
+        </button>
+
+        <span id="currentPageDisplay">Page 1</span>
+
+        <button
+          type="button"
+          id="nextPageButton"
+          class="buttons"
+          onclick="goToNextPage();"
+        >
+          Next
+        </button>
+      </div>
+
+      <br /><br />
+
+      <!-- Add Contact Form -->
+      <div id="addContactFormDiv">
+        <input type="text" id="firstName" placeholder="First Name" /><br />
+        <input type="text" id="lastName" placeholder="Last Name" /><br />
+        <input type="text" id="phoneNumber" placeholder="Phone Number" /><br />
+        <input
+          type="text"
+          id="emailAddress"
+          placeholder="Email Address"
+        /><br />
+        <button
+          type="button"
+          id="addContactButton"
+          class="buttons"
+          onclick="addContact();"
+        >
+          Add Contact
+        </button>
+        <br />
+        <span id="contactAddResult"></span>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        readCookie();
+        searchContacts();
+      });
+    </script>
+  </body>
+</html>

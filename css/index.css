@@ -1,0 +1,113 @@
+/* Use Ubuntu font */
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: #f0f4f8;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Page Title */
+#title {
+  margin-top: 60px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #34495e;
+}
+
+/* Login container */
+#loginDiv {
+  margin-top: 40px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Sub-header */
+#inner-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Inputs */
+#loginDiv input[type="text"],
+#loginDiv input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #bdc3c7;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+#loginDiv input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Buttons */
+.buttons {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  margin-top: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons:hover {
+  background-color: #2980b9;
+}
+
+/* Result message */
+#loginResult {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #e74c3c;
+}
+
+/* Nav Button */
+button[onclick^="location.href"] {
+  margin-top: 20px;
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[onclick^="location.href"]:hover {
+  background-color: #7f8c8d;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  #loginDiv {
+    padding: 20px;
+  }
+
+  .buttons,
+  button[onclick^="location.href"] {
+    width: 100%;
+  }
+}

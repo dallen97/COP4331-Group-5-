@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bulk Upload Contacts</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+      }
+      .buttons {
+        margin-top: 1rem;
+      }
+      #uploadStatus {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+    </style>
+    <script src="./js/code.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        readCookie();
+
+        const nameDisplay = document.getElementById("userName");
+        if (nameDisplay && window.firstName && window.lastName) {
+          nameDisplay.textContent = `Logged in as ${window.firstName} ${window.lastName}`;
+        }
+      });
+
+      async function uploadContacts() {
+        const fileInput = document.getElementById("csvFile");
+        const statusDiv = document.getElementById("uploadStatus");
+
+        if (!fileInput.files.length) {
+          statusDiv.textContent = "Please select a CSV file.";
+          return;
+        }
+
+        if (window.userId < 0) {
+          statusDiv.textContent = "User not logged in.";
+          return;
+        }
+
+        const file = fileInput.files[0];
+        const text = await file.text();
+        const rows = text.trim().split("\n");
+        const headers = rows[0].split(",").map((h) => h.trim());
+        const expectedHeaders = [
+          "FirstName",
+          "LastName",
+          "PhoneNumber",
+          "Email",
+        ];
+
+        if (JSON.stringify(headers) !== JSON.stringify(expectedHeaders)) {
+          statusDiv.textContent =
+            "CSV headers must be: FirstName,LastName,PhoneNumber,Email";
+          return;
+        }
+
+        let successCount = 0;
+        let errorCount = 0;
+
+        for (let i = 1; i < rows.length; i++) {
+          const cols = rows[i].split(",").map((c) => c.trim());
+
+          const payload = {
+            firstName: cols[0],
+            lastName: cols[1],
+            phoneNumber: cols[2],
+            emailAddress: cols[3],
+            userId: window.userId,
+          };
+
+          try {
+            const response = await fetch("LAMPAPI/AddContacts.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            if (!result.error) {
+              successCount++;
+            } else {
+              errorCount++;
+            }
+          } catch (err) {
+            errorCount++;
+          }
+        }
+
+        statusDiv.textContent = `Upload complete. Success: ${successCount}, Failed: ${errorCount}`;
+      }
+
+      window.uploadContacts = uploadContacts;
+
+      async function removeDuplicateContactsByEmail() {
+        if (window.userId < 0) {
+          alert("User not logged in.");
+          return;
+        }
+
+        try {
+          // Step 1: Fetch all contacts for the current user
+          const response = await fetch("LAMPAPI/SearchContacts.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              userId: window.userId,
+              search: "", // get all contacts
+            }),
+          });
+
+          const result = await response.json();
+
+          if (result.error) {
+            console.error("Error fetching contacts:", result.error);
+            return;
+          }
+
+          const contacts = result.results || [];
+          const seenEmails = new Set();
+          const duplicates = [];
+
+          // Step 2: Identify duplicates
+          for (const contact of contacts) {
+            const email = contact.EmailAddress.toLowerCase();
+            if (seenEmails.has(email)) {
+              duplicates.push(contact.ID); // Store ID for deletion
+            } else {
+              seenEmails.add(email);
+            }
+          }
+
+          // Step 3: Delete duplicates
+          let deleteCount = 0;
+          for (const contactId of duplicates) {
+            const delResponse = await fetch("LAMPAPI/DeleteContacts.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                id: contactId,
+                userId: window.userId,
+              }),
+            });
+
+            const deleteResult = await delResponse.json();
+            if (!deleteResult.error) {
+              deleteCount++;
+            }
+          }
+
+          alert(`Removed ${deleteCount} duplicate contact(s) by email.`);
+        } catch (err) {
+          console.error("Error removing duplicates:", err);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bulk Upload Contacts</h1>
+      <p id="userName"></p>
+      <p>Upload a CSV file with this format:</p>
+      <pre>FirstName,LastName,PhoneNumber,Email</pre>
+
+      <input type="file" id="csvFile" accept=".csv" /><br />
+      <button class="buttons" onclick="uploadContacts()">
+        Upload Contacts
+      </button>
+      <button onclick="removeDuplicateContactsByEmail()">
+        Remove Duplicates
+      </button>
+
+      <div id="uploadStatus"></div>
+    </div>
+  </body>
+</html>

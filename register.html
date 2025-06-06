@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Register Page</title>
+    <link href="css/register.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu"
+      rel="stylesheet"
+    />
+    <script src="js/code.js" defer></script>
+  </head>
+  <body>
+    <h1 id="title">COP 4331 LAMP Stack Demo</h1>
+
+    <button
+      type="button"
+      id="signInNavButton"
+      class="buttons"
+      onclick="location.href='index.html'"
+    >
+      Sign In Page
+    </button>
+    <div id="registerDiv">
+      <form onsubmit="return doSignup()">
+        <input type="text" id="firstName" placeholder="First Name" required />
+        <input type="text" id="lastName" placeholder="Last Name" required />
+        <input type="text" id="loginName" placeholder="Username" required />
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Password"
+          required
+        />
+        <button class="buttons" type="submit" id="signUpButton">Sign Up</button>
+        <span id="signupResult" style="color: red"></span>
+      </form>
+    </div>
+  </body>
+</html>
