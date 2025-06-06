@@ -1,8 +1,9 @@
-body html {
+body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
+  background: #0a0a0a;
 }
 
 .background-spinner {
@@ -13,15 +14,13 @@ body html {
   height: 200%;
   background: linear-gradient(
     0deg,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 165, 0, 1) 16%,
-    rgba(255, 255, 0, 1) 33%,
-    rgba(0, 128, 0, 1) 49%,
-    rgba(0, 0, 255, 1) 66%,
-    rgba(75, 0, 130, 1) 82%,
-    rgba(127, 0, 255, 1) 100%
+    rgba(0, 255, 255, 0.1) 0%,
+    rgba(255, 0, 255, 0.1) 25%,
+    rgba(0, 255, 127, 0.1) 50%,
+    rgba(255, 127, 0, 0.1) 75%,
+    rgba(127, 0, 255, 0.1) 100%
   );
-  animation: spin 0.1s linear infinite;
+  animation: spin 2s linear infinite;
   z-index: -1;
 }
 
@@ -39,7 +38,8 @@ body html {
   width: 100%;
   text-align: center;
   font-family: "Ubuntu", sans-serif;
-  color: #ffffff;
+  color: #00ffff;
+  text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
 }
 
 #loginDiv {
@@ -51,7 +51,9 @@ body html {
   padding-top: 25px;
   padding-bottom: 25px;
   border-radius: 3rem;
-  background: #000000;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
 }
 #registerDiv {
   margin-top: 10%;
@@ -62,7 +64,9 @@ body html {
   padding-top: 25px;
   padding-bottom: 25px;
   border-radius: 3rem;
-  background: #000000;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
 }
 
 #loggedInDiv {
@@ -70,7 +74,11 @@ body html {
   width: 70%;
   margin-left: 15%;
   padding: 25px;
-  background-color: #b2b2b2;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #00ff00;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+  color: #ffffff;
 }
 
 #accessUIDiv {
@@ -78,7 +86,11 @@ body html {
   width: 70%;
   margin-left: 15%;
   padding: 25px;
-  background-color: #b2b2b2;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #ffff00;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 255, 0, 0.3);
+  color: #ffffff;
 }
 
 .buttons {
@@ -87,29 +99,54 @@ body html {
   width: 50%;
   margin-left: 25%;
   font-family: "Ubuntu", sans-serif;
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  padding: 15px;
 }
 
 .buttons:hover {
-  background-color: #ffffff;
+  background: linear-gradient(45deg, #00ffff, #0099cc);
   color: #000000;
-  opacity: 50%;
+  border-color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+  text-shadow: none;
+  transform: translateY(-2px);
 }
 
 #registerNavButton {
   margin-bottom: 2%;
   margin-left: 1.5%;
-  padding: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 10px 15px;
   width: auto;
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  color: #ff00ff;
+  border: 2px solid #ff00ff;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+  font-family: "Ubuntu", sans-serif;
 }
 #signInNavButton {
   margin-bottom: 2%;
   margin-left: 1.5%;
-  padding: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 10px 15px;
   width: auto;
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  font-family: "Ubuntu", sans-serif;
 }
 /* #signUpButton {
   padding: 5px;
@@ -149,6 +186,24 @@ input[type="password"] {
   margin-left: 10%;
   margin-bottom: 2%;
   font-family: "Ubuntu", sans-serif;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #666666;
+  color: #ffffff;
+  padding: 12px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  outline: none;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #999999;
 }
 
 #inner-title {
@@ -159,7 +214,8 @@ input[type="password"] {
   margin-left: 5%;
   margin-bottom: 2%;
   font-family: "Ubuntu", sans-serif;
-  color: #95060a;
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffff;
 }
 
 #loginResult {
@@ -170,7 +226,8 @@ input[type="password"] {
   margin-left: 5%;
   margin-bottom: 2%;
   font-family: "Ubuntu", sans-serif;
-  color: #95060a;
+  color: #ff6666;
+  text-shadow: 0 0 10px #ff6666;
 }
 
 #userName {
@@ -178,6 +235,9 @@ input[type="password"] {
   width: 80%;
   margin-left: 10%;
   text-align: center;
+  color: #00ff00;
+  text-shadow: 0 0 15px #00ff00;
+  font-weight: bold;
 }
 
 #logoutButton {
@@ -206,5 +266,6 @@ select {
   margin-top: 2%;
   margin-bottom: 1%;
   font-family: "Ubuntu", sans-serif;
-  color: #95060a;
+  color: #ff6666;
+  text-shadow: 0 0 10px #ff6666;
 }

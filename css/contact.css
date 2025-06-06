@@ -1,8 +1,8 @@
 /* Import Ubuntu font */
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: #f5f7fa;
-  color: #333;
+  background: #0a0a0a;
+  color: #ffffff;
   margin: 0;
   padding: 0;
   display: flex;
@@ -14,46 +14,62 @@ body {
 #title {
   margin-top: 40px;
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #00ffff;
+  text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
 }
 
 /* Logged in div with logout */
 #loggedInDiv {
   margin-top: 10px;
   text-align: center;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #00ff00;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.3);
 }
 
 #userName {
   font-weight: bold;
   font-size: 1.1rem;
+  color: #00ff00;
+  text-shadow: 0 0 15px #00ff00;
 }
 
 /* General button styling */
 .buttons {
-  background-color: #3498db;
-  color: white;
-  border: none;
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  color: #00ffff;
+  border: 2px solid #00ffff;
   border-radius: 6px;
   padding: 10px 16px;
   margin-top: 10px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
 .buttons:hover {
-  background-color: #2980b9;
+  background: linear-gradient(45deg, #00ffff, #0099cc);
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+  text-shadow: none;
+  transform: translateY(-2px);
 }
 
 /* Access UI area */
 #accessUIDiv {
-  background: white;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #ffff00;
   padding: 30px;
   margin-top: 30px;
   width: 90%;
   max-width: 700px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(255, 255, 0, 0.3);
 }
 
 /* Inputs */
@@ -62,15 +78,22 @@ body {
   padding: 12px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid #ccd1d9;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #666666;
   border-radius: 6px;
+  color: #ffffff;
   font-size: 1rem;
-  transition: border-color 0.2s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 #accessUIDiv input[type="text"]:focus {
-  border-color: #3498db;
+  border-color: #ffff00;
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
   outline: none;
+}
+
+#accessUIDiv input[type="text"]::placeholder {
+  color: #999999;
 }
 
 /* Contact table */
@@ -79,26 +102,30 @@ body {
   margin-top: 20px;
   border-collapse: collapse;
   font-size: 1rem;
-  background-color: #ffffff;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #ff00ff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.3);
 }
 
 #contactTable thead {
-  background-color: #3498db;
-  color: white;
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
 }
 
 #contactTable th,
 #contactTable td {
   padding: 12px 16px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #444444;
+  color: #ffffff;
 }
 
 #contactTable tbody tr:hover {
-  background-color: #f5f5f5;
+  background: rgba(255, 0, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
 }
 
 /* Result spans */
@@ -107,7 +134,8 @@ body {
   display: block;
   margin-top: 10px;
   font-size: 0.95rem;
-  color: #e74c3c;
+  color: #ff6666;
+  text-shadow: 0 0 10px #ff6666;
 }
 
 /* Responsive */
