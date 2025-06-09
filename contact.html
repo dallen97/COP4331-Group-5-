@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucent Contact Manager</title>
+    <link href="css/shared.css" rel="stylesheet" />
     <link href="css/contact.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css?family=Ubuntu"
@@ -15,9 +16,9 @@
   <body>
     <h1 id="title">Lucent Contact Manager</h1>
 
-    <!-- Logged-in user + logout -->
+    <!-- User Status Header -->
     <div id="loggedInDiv">
-      <span id="userName"></span><br />
+      <span id="userName"></span>
       <button
         type="button"
         id="logoutButton"
@@ -30,82 +31,97 @@
 
     <!-- Search bar + results placeholder -->
     <div id="accessUIDiv">
-      <br />
-      <input
-        type="text"
-        id="searchText"
-        placeholder="Search Contacts by Name"
-      />
-      <button
-        type="button"
-        id="searchContactButton"
-        class="buttons"
-        onclick="searchContacts();"
-      >
-        Search Contact
-      </button>
-      <br />
-      <span id="contactSearchResult"></span>
-
-      <!-- Contact table (with inline Edit/Delete) -->
-      <table id="contactTable">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="contactList">
-          <!-- JS inserts rows with Edit/Delete buttons here -->
-          <!-- On Edit: convert row cells to input fields + Show Save/Cancel -->
-        </tbody>
-      </table>
-      <div id="paginationControls">
-        <button
-          type="button"
-          id="prevPageButton"
-          class="buttons"
-          onclick="goToPreviousPage();"
-        >
-          Previous
-        </button>
-
-        <span id="currentPageDisplay">Page 1</span>
-
-        <button
-          type="button"
-          id="nextPageButton"
-          class="buttons"
-          onclick="goToNextPage();"
-        >
-          Next
-        </button>
+      <!-- Search Section -->
+      <div class="search-section">
+        <div class="search-input-container">
+          <input
+            type="text"
+            id="searchText"
+            placeholder="Search Contacts by Name"
+          />
+          <button
+            type="button"
+            id="searchContactButton"
+            class="buttons"
+            onclick="searchContacts();"
+          >
+            Search Contact
+          </button>
+        </div>
+        <span id="contactSearchResult"></span>
       </div>
 
-      <br /><br />
+      <!-- Table Container -->
+      <div class="table-container">
+        <!-- Contact table (with inline Edit/Delete) -->
+        <table id="contactTable">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="contactList">
+            <!-- JS inserts rows with Edit/Delete buttons here -->
+            <!-- On Edit: convert row cells to input fields + Show Save/Cancel -->
+          </tbody>
+        </table>
+        
+        <!-- Pagination Controls -->
+        <div id="paginationControls">
+          <button
+            type="button"
+            id="prevPageButton"
+            class="buttons"
+            onclick="goToPreviousPage();"
+          >
+            Previous
+          </button>
 
-      <!-- Add Contact Form -->
-      <div id="addContactFormDiv">
-        <input type="text" id="firstName" placeholder="First Name" /><br />
-        <input type="text" id="lastName" placeholder="Last Name" /><br />
-        <input type="text" id="phoneNumber" placeholder="Phone Number" /><br />
-        <input
-          type="text"
-          id="emailAddress"
-          placeholder="Email Address"
-        /><br />
-        <button
-          type="button"
-          id="addContactButton"
-          class="buttons"
-          onclick="addContact();"
-        >
-          Add Contact
-        </button>
-        <br />
+          <span id="currentPageDisplay">Page 1</span>
+
+          <button
+            type="button"
+            id="nextPageButton"
+            class="buttons"
+            onclick="goToNextPage();"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Add Contact Section (Separate) -->
+    <div id="addContactDiv">
+      <div class="add-contact-section">
+        <div class="add-contact-title">Add New Contact</div>
+        
+        <div class="form-row">
+          <input type="text" id="firstName" placeholder="First Name" />
+          <input type="text" id="lastName" placeholder="Last Name" />
+        </div>
+        
+        <div class="form-row">
+          <input type="text" id="phoneNumber" placeholder="Phone Number" />
+          <input type="text" id="emailAddress" placeholder="Email Address" />
+        </div>
+        
+        <div class="add-contact-button-container">
+          <button
+            type="button"
+            id="addContactButton"
+            class="buttons"
+            onclick="addContact();"
+          >
+            Add Contact
+          </button>
+        </div>
+        
         <span id="contactAddResult"></span>
       </div>
     </div>
