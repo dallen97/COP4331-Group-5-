@@ -294,12 +294,12 @@ function updateContactTable(contacts) {
       contact.EmailAddress || ""
     }" style="display:none;"></td>
       <td>
-        <button onclick="enableInlineEdit(this)">Edit</button>
-        <button style="display:none;" onclick="saveInlineEdit(this, ${
+        <button class="action-btn edit-btn" onclick="enableInlineEdit(this)">Edit</button>
+        <button class="action-btn save-btn" style="display:none;" onclick="saveInlineEdit(this, ${
           contact.ID
         })">Save</button>
-        <button style="display:none;" onclick="cancelInlineEdit(this)">Cancel</button>
-        <button onclick='deleteContact(${contact.ID}, "${
+        <button class="action-btn cancel-btn" style="display:none;" onclick="cancelInlineEdit(this)">Cancel</button>
+        <button class="action-btn delete-btn" onclick='deleteContact(${contact.ID}, "${
       contact.FirstName
     }", "${contact.LastName}")'>Delete</button>
       </td>

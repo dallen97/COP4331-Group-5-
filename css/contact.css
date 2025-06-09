@@ -139,6 +139,7 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  table-layout: fixed;
 }
 
 #contactTable thead {
@@ -218,6 +219,35 @@
   margin: 20px 0;
 }
 
+.pagination-button {
+  background: rgba(26, 26, 46, 0.8);
+  color: #00ffff;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 0 5px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  letter-spacing: 1px;
+  min-width: 40px;
+}
+
+.pagination-button:hover {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: rgba(0, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+.pagination-button:disabled {
+  background: rgba(0, 255, 255, 0.3);
+  color: #000;
+  border-color: rgba(0, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
 #currentPageDisplay {
   color: #00ffff;
   font-weight: 500;
@@ -225,6 +255,64 @@
   letter-spacing: 1px;
   min-width: 80px;
   text-align: center;
+}
+
+/* Table Action Buttons */
+.action-btn {
+  padding: 6px 12px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+
+.edit-btn {
+  background: rgba(26, 26, 46, 0.8);
+  color: #00ffff;
+  border-color: rgba(0, 255, 255, 0.4);
+}
+
+.edit-btn:hover {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: rgba(0, 255, 255, 0.6);
+}
+
+.save-btn {
+  background: rgba(0, 150, 0, 0.8);
+  color: #ffffff;
+  border-color: rgba(0, 200, 0, 0.4);
+}
+
+.save-btn:hover {
+  background: rgba(0, 180, 0, 0.9);
+  border-color: rgba(0, 200, 0, 0.6);
+}
+
+.cancel-btn {
+  background: rgba(150, 150, 0, 0.8);
+  color: #ffffff;
+  border-color: rgba(200, 200, 0, 0.4);
+}
+
+.cancel-btn:hover {
+  background: rgba(180, 180, 0, 0.9);
+  border-color: rgba(200, 200, 0, 0.6);
+}
+
+.delete-btn {
+  background: rgba(150, 0, 0, 0.8);
+  color: #ffffff;
+  border-color: rgba(200, 0, 0, 0.4);
+}
+
+.delete-btn:hover {
+  background: rgba(180, 0, 0, 0.9);
+  border-color: rgba(200, 0, 0, 0.6);
 }
 
 /* Result spans */
