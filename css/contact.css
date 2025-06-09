@@ -127,6 +127,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-x: auto;
 }
 
 /* Contact table */
@@ -139,7 +140,8 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-  table-layout: fixed;
+  table-layout: auto;
+  min-width: 800px;
 }
 
 #contactTable thead {
@@ -150,10 +152,17 @@
 
 #contactTable th,
 #contactTable td {
-  padding: 15px 20px;
+  padding: 15px 12px;
   text-align: left;
   border-bottom: 1px solid rgba(0, 255, 255, 0.1);
   color: #f0f0f0;
+  vertical-align: middle;
+}
+
+#contactTable th:nth-child(5),
+#contactTable td:nth-child(5) {
+  white-space: nowrap;
+  min-width: 180px;
 }
 
 #contactTable tbody tr:hover {
@@ -257,10 +266,30 @@
   text-align: center;
 }
 
+/* Table Edit Inputs */
+#contactTable td input {
+  width: 100%;
+  padding: 8px 12px;
+  margin: 0;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: 6px;
+  background: rgba(26, 26, 46, 0.8);
+  color: #f0f0f0;
+  font-size: 0.9rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+#contactTable td input:focus {
+  outline: none;
+  border-color: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
 /* Table Action Buttons */
 .action-btn {
-  padding: 6px 12px;
-  margin: 2px;
+  padding: 8px 12px;
+  margin: 3px 2px;
   border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 500;
@@ -269,6 +298,7 @@
   font-family: inherit;
   letter-spacing: 0.5px;
   border: 1px solid;
+  display: inline-block;
 }
 
 .edit-btn {
@@ -413,7 +443,17 @@
   #contactTable th,
   #contactTable td {
     font-size: 0.9rem;
-    padding: 12px 8px;
+    padding: 12px 6px;
+  }
+  
+  .action-btn {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+    margin: 2px 1px;
+  }
+  
+  #contactTable {
+    min-width: 700px;
   }
   
   .add-contact-section {
