@@ -1,128 +1,287 @@
-/* General settings */
+/* Use Ubuntu font */
 body {
   font-family: "Ubuntu", sans-serif;
-  background: #0a0a0a;
-  color: #ffffff;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(0, 150, 255, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 75% 75%, rgba(100, 50, 255, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(0, 255, 200, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(50, 150, 255, 0.08) 0%, transparent 35%),
+    linear-gradient(145deg, #000511 0%, #0d1b2a 20%, #001122 40%, #0a1428 60%, #000000 80%, #041833 100%);
+  background-attachment: fixed;
+  color: #f0f0f0;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Page title */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      30deg,
+      transparent,
+      transparent 40px,
+      rgba(0, 255, 255, 0.08) 40px,
+      rgba(0, 255, 255, 0.08) 42px,
+      transparent 42px,
+      transparent 120px
+    ),
+    repeating-linear-gradient(
+      -30deg,
+      transparent,
+      transparent 40px,
+      rgba(100, 150, 255, 0.06) 40px,
+      rgba(100, 150, 255, 0.06) 42px,
+      transparent 42px,
+      transparent 120px
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Page Title */
 #title {
-  margin-top: 60px;
-  font-size: 2.5rem;
-  font-weight: bold;
+  margin-top: 115px;
+  font-size: 3.75rem;
+  font-weight: 600;
   color: #00ffff;
-  text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.3);
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 /* Register container */
 #registerDiv {
-  margin-top: 30px;
-  padding: 30px;
-  width: 90%;
-  max-width: 700px;
-  background: rgba(0, 0, 0, 0.9);
-  border: 2px solid #ff00ff;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+  margin-top: 150px;
+  padding: 35px;
+  width: 60%;
+  max-width: 500px;
+  background: rgba(26, 26, 46, 0.65);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  border-radius: 25px;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   text-align: center;
+  backdrop-filter: blur(4px);
 }
 
-/* Form inputs */
+/* Sub-header */
+#inner-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 20px;
+  color: #00ffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+/* Inputs */
 #registerDiv input[type="text"],
 #registerDiv input[type="password"] {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+  padding: 15px 20px;
+  margin: 15px 0;
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid #666666;
-  border-radius: 6px;
+  background: rgba(26, 26, 46, 0.4);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 12px;
   color: #ffffff;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  font-weight: 400;
+  transition: all 0.4s ease;
+  font-family: inherit;
+  text-align: left;
 }
 
 #registerDiv input:focus {
-  border-color: #ff00ff;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+  border-color: rgba(0, 255, 255, 0.6);
   outline: none;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  background: rgba(26, 26, 46, 0.6);
 }
 
 #registerDiv input::placeholder {
-  color: #999999;
+  color: rgba(0, 255, 255, 0.5);
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
 }
 
 /* Buttons */
 .buttons {
-  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-  color: #ff00ff;
-  border: 2px solid #ff00ff;
-  border-radius: 6px;
-  padding: 10px 18px;
-  margin-top: 10px;
+  background: rgba(26, 26, 46, 0.8);
+  color: #00ffff;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 18px 0;
+  margin: 25px 0 20px 0;
   font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px #ff00ff;
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+  font-family: inherit;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .buttons:hover {
-  background: linear-gradient(45deg, #ff00ff, #cc0099);
-  color: #000000;
-  border-color: #ffffff;
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
-  text-shadow: none;
-  transform: translateY(-2px);
+  background: rgba(0, 255, 255, 0.15);
+  border-color: rgba(0, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+.buttons:focus {
+  outline: none;
+  border-color: rgba(0, 255, 255, 0.6);
+}
+
+.buttons:active {
+  background: rgba(0, 255, 255, 0.15);
 }
 
 /* Result message */
 #signupResult {
   display: block;
   margin-top: 15px;
-  font-size: 0.95rem;
-  color: #ff6666;
-  text-shadow: 0 0 10px #ff6666;
+  font-size: 0.9rem;
+  color: #ff6b6b;
+  font-weight: 400;
 }
 
-/* Spinner placeholder if used */
-.background-spinner {
-  display: none; /* Hide or style this if you actually implement one */
+/* OR Divider */
+.or-divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 0.8rem;
+  color: rgba(0, 255, 255, 0.4);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-/* Sign In nav button (optional different style) */
+.or-divider::before,
+.or-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 255, 255, 0.2);
+}
+
+.or-divider::before {
+  margin-right: 15px;
+}
+
+.or-divider::after {
+  margin-left: 15px;
+}
+
+/* Login Button */
+.login-btn {
+  background: rgba(58, 12, 163, 0.3);
+  color: rgba(0, 255, 255, 0.8);
+  border: 1px solid rgba(58, 12, 163, 0.5);
+  border-radius: 12px;
+  padding: 16px 0;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.login-btn:hover {
+  background: rgba(58, 12, 163, 0.4);
+  color: #00ffff;
+  border-color: rgba(0, 255, 255, 0.4);
+}
+
+.login-btn:focus {
+  outline: none;
+  border-color: rgba(0, 255, 255, 0.4);
+}
+
+.login-btn:active {
+  color: rgba(0, 255, 255, 0.7);
+}
+
+/* Sign In nav button */
 #signInNavButton {
-  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-  color: #00ff00;
-  border: 2px solid #00ff00;
+  background: rgba(26, 26, 46, 0.8);
+  color: #00ffff;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 18px 24px;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #00ff00;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 #signInNavButton:hover {
-  background: linear-gradient(45deg, #00ff00, #00cc00);
-  color: #000000;
-  border-color: #ffffff;
-  box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
-  text-shadow: none;
-  transform: translateY(-2px);
+  background: rgba(0, 255, 255, 0.15);
+  border-color: rgba(0, 255, 255, 0.6);
+  color: #ffffff;
 }
 
-/* Responsive adjustments */
+#signInNavButton:focus {
+  outline: none;
+  border-color: rgba(0, 255, 255, 0.6);
+}
+
+#signInNavButton:active {
+  background: rgba(0, 255, 255, 0.15);
+}
+
+/* Responsive */
 @media (max-width: 500px) {
-  #registerDiv {
-    width: 95%;
-    padding: 20px;
+  #title {
+    font-size: 2.25rem;
+    margin-top: 40px;
   }
 
-  .buttons {
+  #registerDiv {
+    width: 95%;
+    padding: 30px 20px;
+    margin-top: 30px;
+  }
+
+  .buttons,
+  .login-btn,
+  #signInNavButton {
     width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+
+  #registerDiv input[type="text"],
+  #registerDiv input[type="password"] {
+    font-size: 1rem;
+    padding: 14px 16px;
   }
 }
